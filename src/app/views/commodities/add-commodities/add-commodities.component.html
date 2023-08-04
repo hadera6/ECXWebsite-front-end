@@ -1,0 +1,41 @@
+<c-card>
+    <c-card-body>
+        <form [formGroup]="form" cForm class="row g-3"  enctype="multipart/form-data" (ngSubmit)="submitForm()">
+
+            <c-col [md]="1"><label cLabel for="name"><h5>Name</h5></label></c-col>
+            
+            <c-col [md]="11">
+                <input 
+                cFormControl 
+                formControlName="name" 
+                id="name" 
+                type="text" 
+                placeholder="Name" />
+            </c-col>
+
+            <c-col [md]="1"><label cLabel for="description"><h5>Description</h5></label></c-col>
+            <c-col [md]="11">
+                <textarea 
+                    cFormControl 
+                    id="description" 
+                    name="description"
+                    rows="3"
+                    formControlName="description"
+                ></textarea>
+            </c-col>
+            <c-col [md]="1"><label cLabel for="image"><h5>Image</h5></label></c-col>
+            <c-col [md]="11">
+                <input 
+                    cFormControl 
+                    id="image" 
+                    type="file" 
+                    (change)="uploadFile($event)"
+                />
+            </c-col>
+            
+            <c-col [xs]="12">
+              <button cButton type="submit">Sign in</button>
+            </c-col>
+          </form>
+    </c-card-body>
+</c-card>

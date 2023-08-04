@@ -1,0 +1,20 @@
+// Here you can add other styles
+
+:host {
+    ng-scrollbar {
+      --scrollbar-thumb-color: var(--cui-border-color, #999);
+      --scrollbar-track-color: var(--cui-body-color, #fff);
+      --scrollbar-hover-size: calc(var(--scrollbar-size) * 1.5);
+      background-color: rgb(168, 201, 137);
+    }
+    c-sidebar-brand{
+      background-color: rgb(168, 201, 137);
+      color: black;
+  
+    }
+    c-sidebar {
+      background-color: rgb(168, 201, 137);
+      
+    }
+  }
+  

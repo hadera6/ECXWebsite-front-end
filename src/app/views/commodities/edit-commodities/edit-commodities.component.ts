@@ -14,13 +14,14 @@ import {  } from '@angular/platform-browser';
 export class EditCommoditiesComponent implements OnInit {
 
   form:FormGroup;
+  editResponse:any={};
+  getResponse:any={};
   data:any={};
   id:any;
   imagePath:any;
 
   constructor(
     public fb: FormBuilder, 
-    private http: HttpClient, 
     private service:CommoditiesService,
     private route: ActivatedRoute
     ) {
@@ -28,6 +29,7 @@ export class EditCommoditiesComponent implements OnInit {
       name: this.data.name,
       description: this.data.description,
       image: null,
+      langId: this.data.langId,
       createdBy: [''],
       updatedBy: [''],
     });
@@ -36,18 +38,21 @@ export class EditCommoditiesComponent implements OnInit {
   async ngOnInit() {
 
     await this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id = +params.get('id');
+      this.id = params.get('id');
     });
-    await this.service.getCommodity(this.id)
-        .subscribe(response => {
-          this.data = response;
-          this.imagePath = this.service.getImagePath()+this.data.img;
-          this.form.patchValue({
-            name: this.data.name,
-            description: this.data.description
-          });
-          console.log(response);
+
+    console.log(this.id);
+
+    this.getResponse = await this.service.getCommodity(this.id);
+       
+    this.data = this.getResponse.data;
+    this.imagePath = this.service.getImagePath()+this.data.imgName;
+    this.form.patchValue({
+      name: this.data.name,
+      description: this.data.description,
+      langId: this.data.LangId
     });
+
   }
   uploadFile(event:Event) {
     const file = (event.target as HTMLInputElement).files[0];
@@ -63,17 +68,13 @@ export class EditCommoditiesComponent implements OnInit {
     formData.append('id',this.id);
     formData.append('name', this.form.get('name').value);
     formData.append('description', this.form.get('description').value);
+    formData.append('langId', this.form.get('langId').value);
     formData.append('imgFile', this.form.get('image').value);
     formData.append('createdBy', "hadera");
     formData.append('updatedBy', "haderaq");
 
-    await this.service.editCommodity(formData).subscribe(
-      (response) => console.log(response),
-      (error) => {
-        console.log(error.message);
-      }
-    );
+    this.editResponse = await this.service.editCommodity(formData);
 
-    console.log(formData)
+    console.log(formData);
   }
 }

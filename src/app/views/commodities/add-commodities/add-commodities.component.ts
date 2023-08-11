@@ -12,6 +12,7 @@ import { CommoditiesService } from '../commodities.service';
 export class AddCommoditiesComponent implements OnInit {
 
   form:FormGroup;
+  response:any;
 
   constructor(public fb: FormBuilder, private http: HttpClient, private service:CommoditiesService) {
     this.form = this.fb.group({
@@ -20,6 +21,7 @@ export class AddCommoditiesComponent implements OnInit {
       image: [null],
       createdBy: [''],
       updatedBy: [''],
+      langId: ['']
     });
   }
 
@@ -39,14 +41,12 @@ export class AddCommoditiesComponent implements OnInit {
     formData.append('name', this.form.get('name').value);
     formData.append('description', this.form.get('description').value);
     formData.append('imgFile', this.form.get('image').value);
+    formData.append('langId', this.form.get('langId').value);
     formData.append('createdBy', "hadera");
     formData.append('updatedBy', "haderaq");
+    
 
-    await this.service.createCommodity(formData).subscribe(
-      (response) => console.log(response),
-      (error) => {
-        console.log(error.message);
-      }
-    );
+    this.response = await this.service.createCommodity(formData);
+
   }
 }

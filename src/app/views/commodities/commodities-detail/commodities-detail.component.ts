@@ -9,20 +9,18 @@ import { ActivatedRoute, ParamMap } from '@angular/router'
 })
 export class CommoditiesDetailComponent implements OnInit {
   
-  data:any={};
+  response:any={};
   id:any;
-  imgPath:any;
+  imgPath:any=null;
+  data:any;
   constructor(private service:CommoditiesService,private route: ActivatedRoute) {}
   async ngOnInit() {
 
   await this.route.paramMap.subscribe((params: ParamMap) => {
-    this.id = +params.get('id');
+    this.id = params.get('id');
   });
-  await this.service.getCommodity(this.id)
-      .subscribe(response => {
-        this.data = response;
-        this.imgPath = this.service.getImagePath()+this.data.img;
-        console.log(response);
-    });
+  this.response = await this.service.getCommodity(this.id);
+  this.data = this.response.data;
+  this.imgPath = this.service.getImagePath()+this.response.data.imgName;
   }
 }

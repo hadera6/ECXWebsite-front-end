@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { ActivatedRoute } from '@angular/router';
 
+import { firstValueFrom } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,25 +17,30 @@ export class CommoditiesService {
 
   data:any;
 
-  getCommodities(){
+  async getCommodities(){
     const url = 'https://localhost:7284/api/Commodity';
-    return this.httpClient.get(url);
+    const response = await firstValueFrom(this.httpClient.get(url));
+    return response;
   }
-  getCommodity(id:any){
+  async getCommodity(id:any){
     const url = 'https://localhost:7284/api/Commodity/'+id;
-    return this.httpClient.get(url);
+    const response = await firstValueFrom(this.httpClient.get(url));
+    return response;
   }
-  deleteCommodity(id:any){
+  async deleteCommodity(id:any){
     const url = 'https://localhost:7284/api/Commodity/'+id;
-    return this.httpClient.delete(url);
+    const response = await firstValueFrom(this.httpClient.delete(url));
+    return response;
   }
-  editCommodity(data:any){
+  async editCommodity(data:any){
     const url = 'https://localhost:7284/api/Commodity';
-    return this.httpClient.put(url, data);
+    const response = await firstValueFrom(this.httpClient.put(url, data));
+    return response;
   }
-  createCommodity(data:any){
+  async createCommodity(data:any){
     const url = 'https://localhost:7284/api/Commodity';
-    return this.httpClient.post(url, data);
+    const response = await firstValueFrom(this.httpClient.post(url, data));
+    return response;
   }
   getImagePath(){
     return 'https://localhost:7284/image/';

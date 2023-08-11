@@ -18,19 +18,32 @@
                 <textarea 
                     cFormControl 
                     id="description" 
-                    name="description"
                     rows="3"
                     formControlName="description"
                 ></textarea>
             </c-col>
             <c-col [md]="1"><label cLabel for="image"><h5>Image</h5></label></c-col>
-            <c-col [md]="11">
+            <c-col [md]="5">
                 <input 
                     cFormControl 
                     id="image" 
                     type="file" 
                     (change)="uploadFile($event)"
                 />
+            </c-col>
+            <c-col [md]="1"><label cLabel for="image"><h5>language</h5></label></c-col>
+            <c-col [md]="5">
+                <select 
+                    aria-label="Default select example" 
+                    cSelect
+                    cFormControl 
+                    id="langId" 
+                    formControlName="langId"
+                    placeholder="Select language"
+                    >
+                        <option value="Amharic">Amharic</option>
+                        <option value="English">English</option>
+                </select>
             </c-col>
             
             <c-col [xs]="12">

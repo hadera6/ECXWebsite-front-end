@@ -26,6 +26,11 @@ const routes: Routes = [
           import('./views/commodities/commodities.module').then((m) => m.CommoditiesModule)
       },
       {
+        path: 'news',
+        loadChildren: () =>
+          import('./views/news/news.module').then((m) => m.NewsModule)
+      },
+      {
         path: 'board-of-directors',
         loadChildren: () =>
           import('./views/board-of-directors/board-of-directors.module').then((m) => m.BoardOfDirectorsModule)

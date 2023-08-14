@@ -22,6 +22,16 @@
                     formControlName="description"
                 ></textarea>
             </c-col>
+            <c-row>
+                <div>
+                    <c-row>
+                      <c-col [md]="1"></c-col>
+                      <c-col [md]="10">
+                        <img class="form-image"height="100" width="100" [src]="imagePath">
+                      </c-col>
+                    </c-row>
+                </div>
+            </c-row>
             <c-col [md]="1"><label cLabel for="image"><h5>Image</h5></label></c-col>
             <c-col [md]="5">
                 <input 
@@ -40,12 +50,12 @@
                     id="langId" 
                     formControlName="langId"
                     placeholder="Select language"
+                    value="hadera"
                     >
                         <option value="Amharic">Amharic</option>
                         <option value="English">English</option>
                 </select>
             </c-col>
-            
             <c-col [xs]="12">
               <button cButton type="submit">Sign in</button>
             </c-col>

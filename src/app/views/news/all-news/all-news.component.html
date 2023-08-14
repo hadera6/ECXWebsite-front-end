@@ -9,12 +9,12 @@
             >
             <h5><strong>+</strong>New</h5>
         </button>
-        <div class="commodity-div" *ngFor="let item of getResponse.data">
+        <div class="news-div" *ngFor="let item of getResponse.data">
             <c-card>
                 <c-card-header>
                 <div class="row">
                     <div class="col-md-9">
-                        <h5>{{item?.name}}</h5>
+                        <h5>{{item?.title}}</h5>
                     </div>
                     <div class="col-md-3">
                         <button 
@@ -63,6 +63,16 @@
                             (item?.description)
                         }}
                     </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-3">
+                        Date:&nbsp;&nbsp;&nbsp;{{item?.createdDate}}
+                    </div>
+                    <div class="col-md-3">
+                        Source:&nbsp;&nbsp;&nbsp;{{item?.source}}
                     </div>
                 </div>
                 </c-card-body>

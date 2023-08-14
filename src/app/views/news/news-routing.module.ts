@@ -1,35 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AllCommoditiesComponent } from './all-commodities/all-commodities.component';
-import { CommoditiesDetailComponent } from './commodities-detail/commodities-detail.component';
-import { AddCommoditiesComponent } from './add-commodities/add-commodities.component';
-import { EditCommoditiesComponent } from './edit-commodities/edit-commodities.component';
+import { AllNewsComponent } from './all-news/all-news.component';
+import { NewsDetailComponent } from './news-detail/news-detail.component';
+import { AddNewsComponent } from './add-news/add-news.component';
+import { EditNewsComponent } from './edit-news/edit-news.component';
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Commodities',
+      title: 'News',
     },
     children: [
       
       {
         path: '',
-        component: AllCommoditiesComponent,
+        component: AllNewsComponent,
         data: {
           title: 'All',
         },
       },
       {
         path: 'detail/:id',
-        component: CommoditiesDetailComponent,
+        component: NewsDetailComponent,
         data: {
           title: 'Detail',
         },
       },
       {
         path: 'edit/:id',
-        component: EditCommoditiesComponent,
+        component: EditNewsComponent,
         data: {
           title: 'Edit',
         },
@@ -37,7 +37,7 @@ const routes: Routes = [
       ,
       {
         path: 'add',
-        component: AddCommoditiesComponent,
+        component: AddNewsComponent,
         data: {
           title: 'Add',
         },
@@ -50,4 +50,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CommoditiesRoutingModule {}
+export class NewsRoutingModule {}

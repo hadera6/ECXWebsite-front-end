@@ -27,8 +27,18 @@
                     [value] = "data.description" 
                 ></textarea>
             </c-col>
+            <c-row>
+              <div>
+                  <c-row>
+                    <c-col [md]="1"></c-col>
+                    <c-col [md]="10">
+                      <img class="commodity-image" height="100" width="100" [src]="imagePath">
+                    </c-col>
+                  </c-row>
+              </div>
+            </c-row>
             <c-col [md]="1"><label cLabel for="image"><h5>Image</h5></label></c-col>
-            <c-col [md]="11">
+            <c-col [md]="5">
                 <input 
                     cFormControl 
                     id="image" 
@@ -36,12 +46,22 @@
                     (change)="uploadFile($event)"
                 />
             </c-col>
-            <c-row>
-              <c-col [md]="2"><label cLabel for="name"><h5>Current Image</h5></label></c-col>
-              <c-col [md]="10">
-                <img height="100" width="100" [src]="imagePath">
-              </c-col>
-            </c-row>
+            <c-col [md]="1"><label cLabel for="image"><h5>language</h5></label></c-col>
+            <c-col [md]="5">
+                <select 
+                    aria-label="Default select example" 
+                    cSelect
+                    cFormControl 
+                    id="langId" 
+                    formControlName="langId"
+                    placeholder="Select language"
+                    value="eng"
+                    >
+                        <option value="Amharic">Amharic</option>
+                        <option value="English">English</option>
+                </select>
+            </c-col>
+            
             <c-col [xs]="12">
               <button cButton type="submit">Sign in</button>
             </c-col>

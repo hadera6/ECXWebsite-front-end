@@ -2,27 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { CommoditiesService } from '../commodities.service';
+import { NewsService } from '../news.service';
 
 @Component({
-  selector: 'app-add-commodities',
-  templateUrl: './add-commodities.component.html',
-  styleUrls: ['./add-commodities.component.scss']
+  selector: 'app-add-news',
+  templateUrl: './add-news.component.html',
+  styleUrls: ['./add-news.component.scss']
 })
-export class AddCommoditiesComponent implements OnInit {
+export class AddNewsComponent implements OnInit {
 
   imagePath:string="../../../assets/image/imgHolder.png";
   form:FormGroup;
   response:any;
 
-  constructor(public fb: FormBuilder, private http: HttpClient, private service:CommoditiesService) {
+  constructor(public fb: FormBuilder, private http: HttpClient, private service:NewsService) {
     this.form = this.fb.group({
-      name: [''],
+      title: [''],
       description: [''],
       image: [null],
       createdBy: [''],
       updatedBy: [''],
-      langId: ['']
+      langId: [''],
+      source: [''],
+      expDate: ['']
     });
   }
 
@@ -40,15 +42,17 @@ export class AddCommoditiesComponent implements OnInit {
   
   async submitForm () {
     var formData: any = new FormData();
-    formData.append('name', this.form.get('name').value);
+    formData.append('title', this.form.get('title').value);
     formData.append('description', this.form.get('description').value);
     formData.append('imgFile', this.form.get('image').value);
     formData.append('langId', this.form.get('langId').value);
+    formData.append('source', this.form.get('source').value);
+    formData.append('expDate', this.form.get('expDate').value);
     formData.append('createdBy', "hadera");
     formData.append('updatedBy', "haderaq");
     
 
-    this.response = await this.service.createCommodity(formData);
+    this.response = await this.service.createNews(formData);
 
   }
 }

@@ -10,27 +10,16 @@ export const navItems: INavData[] = [
     name: 'Commodities',
     url: '/commodities',
     iconComponent: { name: 'cil-speedometer' },
-    children: [
-      {
-        name: 'AllCommodities',
-        url: '/commodities'
-      },
-      {
-        name: 'AddCommodities',
-        url: '/commodities/add'
-      }
-    ]
+  },
+  {
+    name: 'News',
+    url: '/news',
+    iconComponent: { name: 'cil-speedometer' },
   },
   {
     name: 'Carousel',
-    url: '/commodities',
+    url: '/carousel',
     iconComponent: { name: 'cil-speedometer' },
-    children: [
-      {
-        name: 'AllCarousel',
-        url: '/carousel/add-carousel'
-      }
-    ]
   },
   {
     name: 'BoardOfDirectors',

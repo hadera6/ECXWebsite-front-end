@@ -3,27 +3,27 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import {  Observable } from 'rxjs';
-import { CommoditiesService } from '../commodities.service';
+import { NewsService } from '../news.service';
 
 import { Router } from '@angular/router';
 
 import { cilPencil, cilTrash, cilWatch, cilViewStream } from '@coreui/icons';
 
 @Component({
-  selector: 'app-all-commodities',
-  templateUrl: './all-commodities.component.html',
-  styleUrls: ['./all-commodities.component.scss']
+  selector: 'app-all-news',
+  templateUrl: './all-news.component.html',
+  styleUrls: ['./all-news.component.scss']
 })
-export class AllCommoditiesComponent  implements OnInit  {
+export class AllNewsComponent  implements OnInit  {
 
   icons = { cilPencil, cilTrash, cilViewStream };
   getResponse:any={};
   deleteResponse:any={};
 
   imagePath = this.service.getImagePath();
-  constructor(private service:CommoditiesService,private router: Router) {}
+  constructor(private service:NewsService,private router: Router) {}
   async ngOnInit() {
-    this.getResponse = (await this.service.getCommodities());
+    this.getResponse = (await this.service.getAllNews());
   }
   // async ngOnChanges(changes) {
   //   // if (changes['getResponse']) {
@@ -31,16 +31,16 @@ export class AllCommoditiesComponent  implements OnInit  {
   //   // }
   // }
   async onDelete(id:any){
-    this.deleteResponse = await this.service.deleteCommodity(id);
-    this.getResponse = (await this.service.getCommodities());
+    this.deleteResponse = await this.service.deleteNews(id);
+    this.getResponse = (await this.service.getAllNews());
   }
   onEdit(id:any){
-    this.router.navigateByUrl('commodities/edit/'+id);
+    this.router.navigateByUrl('news/edit/'+id);
   }
   onView(id:any){
-    this.router.navigateByUrl('commodities/detail/'+id);
+    this.router.navigateByUrl('news/detail/'+id);
   }
   onAdd(){
-    this.router.navigateByUrl('commodities/add');
+    this.router.navigateByUrl('news/add');
   }
 }

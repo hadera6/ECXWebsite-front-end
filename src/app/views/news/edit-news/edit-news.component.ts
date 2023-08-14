@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { CommoditiesService } from '../commodities.service';
+import { NewsService } from '../news.service';
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import {  } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-edit-commodities',
-  templateUrl: './edit-commodities.component.html',
-  styleUrls: ['./edit-commodities.component.scss']
+  selector: 'app-edit-news',
+  templateUrl: './edit-news.component.html',
+  styleUrls: ['./edit-news.component.scss']
 })
-export class EditCommoditiesComponent implements OnInit {
+export class EditNewsComponent implements OnInit {
 
   form:FormGroup;
   editResponse:any={};
@@ -22,14 +22,16 @@ export class EditCommoditiesComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder, 
-    private service:CommoditiesService,
+    private service:NewsService,
     private route: ActivatedRoute
     ) {
     this.form = this.fb.group({
-      name: this.data.name,
+      title: this.data.title,
       description: this.data.description,
       image: null,
       langId: this.data.langId,
+      expDate: this.data.expDate,
+      source: this.data.source,
       createdBy: [''],
       updatedBy: ['']
     });
@@ -43,14 +45,16 @@ export class EditCommoditiesComponent implements OnInit {
 
     console.log(this.id);
 
-    this.getResponse = await this.service.getCommodity(this.id);
+    this.getResponse = await this.service.getNews(this.id);
        
     this.data = this.getResponse.data;
     this.imagePath = this.service.getImagePath()+this.data.imgName;
     this.form.patchValue({
-      name: this.data.name,
+      title: this.data.title,
       description: this.data.description,
-      langId: this.data.LangId
+      langId: this.data.LangId,
+      expDate: this.data.expDate,
+      source: this.data.source
     });
 
   }
@@ -66,14 +70,16 @@ export class EditCommoditiesComponent implements OnInit {
   async submitForm () {
     var formData: any = new FormData();
     formData.append('id',this.id);
-    formData.append('name', this.form.get('name').value);
+    formData.append('title', this.form.get('title').value);
     formData.append('description', this.form.get('description').value);
     formData.append('langId', this.form.get('langId').value);
     formData.append('imgFile', this.form.get('image').value);
+    formData.append('expDate', this.form.get('expDate').value);
+    formData.append('source', this.form.get('source').value);
     formData.append('createdBy', "hadera");
     formData.append('updatedBy', "haderaq");
 
-    this.editResponse = await this.service.editCommodity(formData);
+    this.editResponse = await this.service.editNews(formData);
 
     console.log(formData);
   }

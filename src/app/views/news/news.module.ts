@@ -36,7 +36,7 @@ import { EditNewsComponent} from './edit-news/edit-news.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Components Routing
-import { NewsRoutingModule } from './News-routing.module';
+import { NewsRoutingModule } from './news-routing.module';
 import { NewsService } from './news.service';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 

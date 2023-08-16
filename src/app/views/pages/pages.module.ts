@@ -1,7 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { PagesRoutingModule } from './pages-routing.module';
-import { PagesComponent } from './pages.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
+// CoreUI Modules
 import {
   AvatarModule,
   BadgeModule,
@@ -19,15 +21,31 @@ import {
   ProgressModule,
   SharedModule,
   SidebarModule,
-  TableModule,
   TabsModule,
-  UtilitiesModule
+  TableModule,
+  UtilitiesModule,
+  InputGroupComponent
 } from '@coreui/angular';
+
+// views
+import { AllPagesComponent } from './all-pages/all-pages.component';
+import { PagesDetailComponent} from './pages-detail/pages-detail.component';
+import { AddPagesComponent} from './add-pages/add-pages.component';
+import { EditPagesComponent} from './edit-pages/edit-pages.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Components Routing
+import { PagesRoutingModule } from './pages-routing.module';
+import { PagesService } from './pages.service';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
 
 @NgModule({
   imports: [
-    
+    CommonModule,
     PagesRoutingModule,
+    CardModule,
+    InputGroupComponent,
     AvatarModule,
     BreadcrumbModule,
     FooterModule,
@@ -48,9 +66,21 @@ import {
     BadgeModule,
     ListGroupModule,
     CardModule,
-    TableModule
+    TableModule,
+    HttpClientModule,
+    IconModule,
+
+    FormsModule,
+    ReactiveFormsModule
+    
   ],
-  declarations: [PagesComponent]
+  providers: [PagesService,IconSetService],
+  declarations: [
+    AllPagesComponent,
+    PagesDetailComponent,
+    AddPagesComponent,
+    EditPagesComponent
+  ],
 })
-export class PagesModule {
-}
+
+export class PagesModule {}

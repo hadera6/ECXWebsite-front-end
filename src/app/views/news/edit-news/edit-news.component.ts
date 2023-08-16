@@ -52,7 +52,7 @@ export class EditNewsComponent implements OnInit {
     this.form.patchValue({
       title: this.data.title,
       description: this.data.description,
-      langId: this.data.LangId,
+      langId: this.data.langId,
       expDate: this.data.expDate,
       source: this.data.source
     });

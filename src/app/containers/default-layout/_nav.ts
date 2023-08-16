@@ -17,8 +17,18 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-speedometer' },
   },
   {
-    name: 'Carousel',
-    url: '/carousel',
+    name: 'Page Catagories',
+    url: '/page-catagories',
+    iconComponent: { name: 'cil-speedometer' }
+  },
+  {
+    name: 'Pages',
+    url: '/pages',
+    iconComponent: { name: 'cil-speedometer' }
+  },
+  {
+    name: 'Image',
+    url: '/images',
     iconComponent: { name: 'cil-speedometer' },
   },
   {
@@ -50,10 +60,6 @@ export const navItems: INavData[] = [
     name: 'CustomerSupport',
     url: '/customer-support',
     iconComponent: { name: 'cil-speedometer' }
-  },
-  {
-    name: 'Pages',
-    url: '/pages',
-    iconComponent: { name: 'cil-speedometer' }
   }
+  
 ];

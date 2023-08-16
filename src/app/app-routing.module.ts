@@ -31,9 +31,24 @@ const routes: Routes = [
           import('./views/news/news.module').then((m) => m.NewsModule)
       },
       {
+        path: 'page-catagories',
+        loadChildren: () =>
+          import('./views/page-catagories/page-catagories.module').then((m) => m.PageCatagoriesModule)
+      },
+      {
+        path: 'pages',
+        loadChildren: () =>
+          import('./views/pages/pages.module').then((m) => m.PagesModule)
+      },
+      {
         path: 'board-of-directors',
         loadChildren: () =>
           import('./views/board-of-directors/board-of-directors.module').then((m) => m.BoardOfDirectorsModule)
+      },
+      {
+        path: 'images',
+        loadChildren: () =>
+          import('./views/images/images.module').then((m) => m.ImagesModule)
       },
       {
         path: 'career',
@@ -59,11 +74,6 @@ const routes: Routes = [
         path: 'customer-support',
         loadChildren: () =>
           import('./views/customer-support/customer-support.module').then((m) => m.CustomerSupportModule)
-      },
-      {
-        path: 'pages',
-        loadChildren: () =>
-          import('./views/pages/pages.module').then((m) => m.PagesModule)
       }
     ]
   },

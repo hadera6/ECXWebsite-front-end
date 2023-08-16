@@ -2,7 +2,8 @@
     <c-card-header><h4>{{data?.title}}</h4></c-card-header>
     <c-card-body>
       <p cCardText>Expire&nbsp;Date:
-        &nbsp;&nbsp;{{data?.expDate}}
+        &nbsp;&nbsp;
+        {{data?.expDate.toString().split("T")[0]}}
       </p>
       <p cCardText>Source:
         &nbsp;&nbsp;{{data?.source}}

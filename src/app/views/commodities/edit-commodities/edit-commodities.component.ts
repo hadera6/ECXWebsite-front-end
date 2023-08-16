@@ -50,7 +50,7 @@ export class EditCommoditiesComponent implements OnInit {
     this.form.patchValue({
       name: this.data.name,
       description: this.data.description,
-      langId: this.data.LangId
+      langId: this.data.langId
     });
 
   }

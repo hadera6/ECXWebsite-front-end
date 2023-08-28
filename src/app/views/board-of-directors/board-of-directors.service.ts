@@ -15,8 +15,6 @@ export class BoardOfDirectorsService {
 
   constructor(private httpClient: HttpClient,private route: ActivatedRoute) { }
 
-  data:any;
-
   async getBoardOfDirectors(){
     const url = 'https://localhost:7284/api/BoardOfDirector';
     const response = await firstValueFrom(this.httpClient.get(url));
@@ -42,6 +40,7 @@ export class BoardOfDirectorsService {
     const response = await firstValueFrom(this.httpClient.post(url, data));
     return response;
   }
+
   getImagePath(){
     return 'https://localhost:7284/image/';
   }

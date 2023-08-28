@@ -3,7 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { BoardOfDirectorsService } from '../board-of-directors.service';
-
+import { LanguagesService } from '../../languages/languages.service';
+import { AppService } from '../../../../app/app.service';
 @Component({
   selector: 'app-add-board-of-directors',
   templateUrl: './add-board-of-directors.component.html',
@@ -14,8 +15,14 @@ export class AddBoardOfDirectorsComponent implements OnInit {
   imagePath:string="../../../assets/image/imgHolder.png";
   form:FormGroup;
   response:any;
+  languages:any={};
 
-  constructor(public fb: FormBuilder, private http: HttpClient, private service:BoardOfDirectorsService) {
+  constructor(
+    public fb: FormBuilder, 
+    private http: HttpClient, 
+    private service:BoardOfDirectorsService,
+    private langService:LanguagesService
+    ) {
     this.form = this.fb.group({
       name: [''],
       description: [''],
@@ -26,8 +33,8 @@ export class AddBoardOfDirectorsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    
+  async ngOnInit(){
+    this.languages = (await this.langService.getAllLanguage());
   }
   uploadFile(event:Event) {
     const file = (event.target as HTMLInputElement).files[0];

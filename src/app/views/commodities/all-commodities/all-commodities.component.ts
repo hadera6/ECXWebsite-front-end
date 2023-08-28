@@ -25,11 +25,7 @@ export class AllCommoditiesComponent  implements OnInit  {
   async ngOnInit() {
     this.getResponse = (await this.service.getCommodities());
   }
-  // async ngOnChanges(changes) {
-  //   // if (changes['getResponse']) {
-  //   //   console.log("changed . . .");
-  //   // }
-  // }
+  
   async onDelete(id:any){
     this.deleteResponse = await this.service.deleteCommodity(id);
     this.getResponse = (await this.service.getCommodities());

@@ -23,8 +23,12 @@
                   placeholder="Select language"
                   value="hadera"
                   >
-                      <option value="Amharic">Amharic</option>
-                      <option value="English">English</option>
+                    <option  
+                        *ngFor="let item of languages.data"
+                        [value]="item.id"
+                    >
+                        {{item.name}}
+                    </option>
               </select>
           </c-col>
           <c-col [md]="1"><label cLabel for="source"><h5>Source</h5></label></c-col>
@@ -44,20 +48,19 @@
                   cFormControl 
                   id="expDate" 
                   formControlName="expDate"
-                  placeholder="Select Date"
                   type="date"
               />
           </c-col>
 
-          <c-col [md]="2"><label cLabel for="description"><h5>Description</h5></label></c-col>
-          <c-col [md]="10">
-              <textarea 
-                  cFormControl 
-                  id="description" 
-                  rows="3"
-                  formControlName="description"
-              ></textarea>
-          </c-col>
+          <c-col [md]="12"><label cLabel for="description"><h5>Description</h5></label></c-col>
+            <c-col [md]="12">
+                <quill-editor 
+                    [styles]="{height: '300px'}" 
+                    [modules]="modules" 
+                    formControlName="description"
+                >
+            </quill-editor>
+            </c-col>
           <c-row>
               <div>
                   <c-row>

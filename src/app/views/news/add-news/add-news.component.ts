@@ -4,6 +4,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NewsService } from '../news.service';
 
+import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
+
+import 'quill-emoji/dist/quill-emoji.js';
+
+import Quill from 'quill'
+import BlotFormatter from 'quill-blot-formatter';
+import { LanguagesService } from '../../languages/languages.service';
+
+Quill.register('modules/blotFormatter', BlotFormatter);
+
 @Component({
   selector: 'app-add-news',
   templateUrl: './add-news.component.html',
@@ -13,9 +23,18 @@ export class AddNewsComponent implements OnInit {
 
   imagePath:string="../../../assets/image/imgHolder.png";
   form:FormGroup;
-  response:any;
+  response:any={};
+  languages:any={};
 
-  constructor(public fb: FormBuilder, private http: HttpClient, private service:NewsService) {
+
+  modules = {}
+
+  constructor(
+    public fb: FormBuilder, 
+    private http: HttpClient, 
+    private service:NewsService,
+    private langService :LanguagesService
+    ) {
     this.form = this.fb.group({
       title: [''],
       description: [''],
@@ -26,10 +45,44 @@ export class AddNewsComponent implements OnInit {
       source: [''],
       expDate: ['']
     });
+
+    this.modules = {
+      'emoji-shortname': true,
+      'emoji-textarea': false,
+      'emoji-toolbar': true,
+      blotFormatter: {
+        // empty object for default behaviour.
+      },
+      'toolbar': {
+        container: [
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+
+          [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+          [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+          [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+          [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+          [{ 'direction': 'rtl' }],                         // text direction
+
+          [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+          [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+          [{ 'font': [] }],
+          [{ 'align': [] }],
+
+          ['clean'],                                         // remove formatting button
+
+          ['link', 'image', 'video'],                         // link and image, video
+          ['emoji'],
+        ],
+        handlers: { 'emoji': function () { } },
+      }
+    }
   }
 
-  ngOnInit(): void {
-    
+  async ngOnInit() {
+    this.languages = await this.langService.getAllLanguage();
   }
   uploadFile(event:Event) {
     const file = (event.target as HTMLInputElement).files[0];

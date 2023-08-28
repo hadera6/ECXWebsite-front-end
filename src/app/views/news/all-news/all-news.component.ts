@@ -19,11 +19,11 @@ export class AllNewsComponent  implements OnInit  {
   icons = { cilPencil, cilTrash, cilViewStream };
   getResponse:any={};
   deleteResponse:any={};
-
+  
   imagePath = this.service.getImagePath();
   constructor(private service:NewsService,private router: Router) {}
   async ngOnInit() {
-    this.getResponse = (await this.service.getAllNews());
+    this.getResponse = await this.service.getAllNews();
   }
   // async ngOnChanges(changes) {
   //   // if (changes['getResponse']) {
@@ -32,7 +32,7 @@ export class AllNewsComponent  implements OnInit  {
   // }
   async onDelete(id:any){
     this.deleteResponse = await this.service.deleteNews(id);
-    this.getResponse = (await this.service.getAllNews());
+    this.getResponse = await this.service.getAllNews();
   }
   onEdit(id:any){
     this.router.navigateByUrl('news/edit/'+id);

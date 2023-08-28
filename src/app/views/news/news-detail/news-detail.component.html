@@ -9,6 +9,6 @@
         &nbsp;&nbsp;{{data?.source}}
       </p>
       <img [src]="imgPath">
-      <p cCardText>{{data?.description}}</p>
+      <p [innerHTML]="data?.description" cCardText></p>
     </c-card-body>
 </c-card>

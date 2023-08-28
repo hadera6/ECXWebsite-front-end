@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ImagesService } from '../images.service';
+import { LanguagesService } from '../../languages/languages.service';
 
 @Component({
   selector: 'app-add-images',
@@ -14,8 +15,14 @@ export class AddImagesComponent implements OnInit {
   imagePath:string="../../../assets/image/imgHolder.png";
   form:FormGroup;
   response:any;
+  languages:any={};
 
-  constructor(public fb: FormBuilder, private http: HttpClient, private service:ImagesService) {
+  constructor(
+    public fb: FormBuilder, 
+    private http: HttpClient, 
+    private service:ImagesService,
+    private langService:LanguagesService
+    ) {
     this.form = this.fb.group({
       title: [''],
       caption: [''],
@@ -27,7 +34,8 @@ export class AddImagesComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.languages = await this.langService.getAllLanguage();
     
   }
   uploadFile(event:Event) {

@@ -19,11 +19,16 @@ export class AllBoardOfDirectorsComponent  implements OnInit  {
   icons = { cilPencil, cilTrash, cilViewStream };
   getResponse:any={};
   deleteResponse:any={};
+  
 
   imagePath = this.service.getImagePath();
-  constructor(private service:BoardOfDirectorsService,private router: Router) {}
+  constructor(
+    private service:BoardOfDirectorsService,
+    private router: Router
+    ) {}
   async ngOnInit() {
     this.getResponse = (await this.service.getBoardOfDirectors());
+    
   }
   // async ngOnChanges(changes) {
   //   // if (changes['getResponse']) {

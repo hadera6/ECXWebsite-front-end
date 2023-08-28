@@ -6,6 +6,16 @@ import { NewsService } from '../news.service';
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import {  } from '@angular/platform-browser';
 
+import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
+
+import 'quill-emoji/dist/quill-emoji.js';
+
+import Quill from 'quill'
+import BlotFormatter from 'quill-blot-formatter';
+import { LanguagesService } from '../../languages/languages.service';
+
+Quill.register('modules/blotFormatter', BlotFormatter);
+
 @Component({
   selector: 'app-edit-news',
   templateUrl: './edit-news.component.html',
@@ -19,11 +29,18 @@ export class EditNewsComponent implements OnInit {
   data:any={};
   id:any;
   imagePath:any;
+  languages:any={};
+
+  blured = false
+  focused = false
+  html =""
+  modules = {}
 
   constructor(
     public fb: FormBuilder, 
     private service:NewsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private langService : LanguagesService
     ) {
     this.form = this.fb.group({
       title: this.data.title,
@@ -35,6 +52,40 @@ export class EditNewsComponent implements OnInit {
       createdBy: [''],
       updatedBy: ['']
     });
+
+    this.modules = {
+      'emoji-shortname': true,
+      'emoji-textarea': false,
+      'emoji-toolbar': true,
+      blotFormatter: {
+        // empty object for default behaviour.
+      },
+      'toolbar': {
+        container: [
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+
+          [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+          [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+          [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+          [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+          [{ 'direction': 'rtl' }],                         // text direction
+
+          [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+          [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+          [{ 'font': [] }],
+          [{ 'align': [] }],
+
+          ['clean'],                                         // remove formatting button
+
+          ['link', 'image', 'video'],                         // link and image, video
+          ['emoji'],
+        ],
+        handlers: { 'emoji': function () { } },
+      }
+    }
   }
 
   async ngOnInit() {
@@ -43,7 +94,7 @@ export class EditNewsComponent implements OnInit {
       this.id = params.get('id');
     });
 
-    console.log(this.id);
+     this.languages = await this.langService.getAllLanguage();
 
     this.getResponse = await this.service.getNews(this.id);
        

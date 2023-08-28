@@ -3,6 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommoditiesService } from '../commodities.service';
+import { LanguagesService } from '../../languages/languages.service';
+
 
 @Component({
   selector: 'app-add-commodities',
@@ -13,21 +15,27 @@ export class AddCommoditiesComponent implements OnInit {
 
   imagePath:string="../../../assets/image/imgHolder.png";
   form:FormGroup;
-  response:any;
+  response:any={};
+  languages:any={};
 
-  constructor(public fb: FormBuilder, private http: HttpClient, private service:CommoditiesService) {
-    this.form = this.fb.group({
-      name: [''],
-      description: [''],
-      image: [null],
-      createdBy: [''],
-      updatedBy: [''],
-      langId: ['']
+  constructor(
+    public fb: FormBuilder, 
+    private http: HttpClient, 
+    private service:CommoditiesService,
+    private langService:LanguagesService
+  ) {
+  this.form = this.fb.group({
+    name: [''],
+    description: [''],
+    image: [null],
+    createdBy: [''],
+    updatedBy: [''],
+    langId: ['']
     });
   }
 
-  ngOnInit(): void {
-    
+  async ngOnInit(){
+    this.languages = (await this.langService.getAllLanguage());
   }
   uploadFile(event:Event) {
     const file = (event.target as HTMLInputElement).files[0];

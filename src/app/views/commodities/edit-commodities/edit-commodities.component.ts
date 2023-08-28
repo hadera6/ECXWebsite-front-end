@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommoditiesService } from '../commodities.service';
 import { ActivatedRoute, ParamMap } from '@angular/router'
-import {  } from '@angular/platform-browser';
+import { LanguagesService } from '../../languages/languages.service';
 
 @Component({
   selector: 'app-edit-commodities',
@@ -19,11 +19,13 @@ export class EditCommoditiesComponent implements OnInit {
   data:any={};
   id:any;
   imagePath:any;
+  languages:any={};
 
   constructor(
     public fb: FormBuilder, 
     private service:CommoditiesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private langService: LanguagesService
     ) {
     this.form = this.fb.group({
       name: this.data.name,
@@ -34,14 +36,13 @@ export class EditCommoditiesComponent implements OnInit {
       updatedBy: ['']
     });
   }
-
   async ngOnInit() {
 
     await this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = params.get('id');
     });
 
-    console.log(this.id);
+    this.languages = await this.langService.getAllLanguage();
 
     this.getResponse = await this.service.getCommodity(this.id);
        

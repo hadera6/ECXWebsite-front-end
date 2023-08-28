@@ -40,6 +40,9 @@ import { NewsRoutingModule } from './news-routing.module';
 import { NewsService } from './news.service';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 
+import { QuillModule } from 'ngx-quill';
+import { LanguagesModule } from '../languages/languages.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -71,7 +74,9 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
     IconModule,
 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QuillModule,
+    LanguagesModule
     
   ],
   providers: [NewsService,IconSetService],

@@ -3,6 +3,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PagesService } from '../pages.service';
+import { PageCatagoriesService } from '../../page-catagories/page-catagories.service';
+import { LanguagesService } from '../../languages/languages.service';
+
 
 @Component({
   selector: 'app-add-pages',
@@ -14,8 +17,16 @@ export class AddPagesComponent implements OnInit {
   imagePath:string="../../../assets/image/imgHolder.png";
   form:FormGroup;
   response:any;
+  catagories:any={};
+  languages :any={};
 
-  constructor(public fb: FormBuilder, private http: HttpClient, private service:PagesService) {
+  constructor(
+      public fb: FormBuilder, 
+      private http: HttpClient, 
+      private service:PagesService,
+      private catagoryService:PageCatagoriesService,
+      private langService:LanguagesService
+    ) {
     this.form = this.fb.group({
       title: [''],
       description: [''],
@@ -27,8 +38,9 @@ export class AddPagesComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    
+  async ngOnInit(){
+    this.catagories = await this.catagoryService.getAllPageCatagory();
+    this.languages = await this.langService.getAllLanguage();
   }
   uploadFile(event:Event) {
     const file = (event.target as HTMLInputElement).files[0];

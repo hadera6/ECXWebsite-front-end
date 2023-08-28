@@ -23,13 +23,17 @@
                     formControlName="langId"
                     placeholder="Select language"
                     >
-                        <option value="Amharic">Amharic</option>
-                        <option value="English">English</option>
+                    <option  
+                        *ngFor="let item of languages.data"
+                        [value]="item.id"
+                    >
+                        {{item.name}}
+                    </option>
                 </select>
             </c-col>
 
-            <c-col [md]="1"><label cLabel for="description"><h5>Description</h5></label></c-col>
-            <c-col [md]="11">
+            <c-col [md]="12"><label cLabel for="description"><h5>Description</h5></label></c-col>
+            <c-col [md]="12">
                 <textarea 
                     cFormControl 
                     id="description" 

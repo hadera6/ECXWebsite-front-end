@@ -24,7 +24,7 @@ import {
   TabsModule,
   TableModule,
   UtilitiesModule,
-  InputGroupComponent
+  InputGroupComponent,
 } from '@coreui/angular';
 
 // views
@@ -39,6 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BoardOfDirectorsRoutingModule } from './board-of-directors-routing.module';
 import { BoardOfDirectorsService } from './board-of-directors.service';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { LanguagesModule } from '../languages/languages.module';
 
 @NgModule({
   imports: [
@@ -64,14 +65,14 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
     ListGroupModule,
     ProgressModule,
     BadgeModule,
-    ListGroupModule,
     CardModule,
     TableModule,
     HttpClientModule,
     IconModule,
 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LanguagesModule
     
   ],
   providers: [BoardOfDirectorsService,IconSetService],

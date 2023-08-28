@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ImagesService } from '../images.service';
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import {  } from '@angular/platform-browser';
+import { LanguagesService } from '../../languages/languages.service';
 
 @Component({
   selector: 'app-edit-images',
@@ -19,11 +20,13 @@ export class EditImagesComponent implements OnInit {
   data:any={};
   id:any;
   imagePath:any;
+  languages:any={};
 
   constructor(
     public fb: FormBuilder, 
     private service:ImagesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private langService: LanguagesService
     ) {
     this.form = this.fb.group({
       title: this.data.title,
@@ -42,7 +45,7 @@ export class EditImagesComponent implements OnInit {
       this.id = params.get('id');
     });
 
-    console.log(this.id);
+    this.languages = await this.langService.getAllLanguage();
 
     this.getResponse = await this.service.getImage(this.id);
        

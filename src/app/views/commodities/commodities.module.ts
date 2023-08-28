@@ -39,6 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommoditiesRoutingModule } from './commodities-routing.module';
 import { CommoditiesService } from './commodities.service';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { LanguagesModule } from '../languages/languages.module';
 
 @NgModule({
   imports: [
@@ -71,7 +72,8 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
     IconModule,
 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LanguagesModule
     
   ],
   providers: [CommoditiesService,IconSetService],

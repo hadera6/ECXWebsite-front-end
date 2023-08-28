@@ -39,6 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImagesRoutingModule } from './images-routing.module';
 import { ImagesService } from './images.service';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { LanguagesModule } from '../languages/languages.module';
 
 @NgModule({
   imports: [
@@ -71,7 +72,8 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
     IconModule,
 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LanguagesModule
     
   ],
   providers: [ImagesService,IconSetService],

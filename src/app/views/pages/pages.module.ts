@@ -39,6 +39,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesService } from './pages.service';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { LanguagesModule } from '../languages/languages.module';
+import { PageCatagoriesDetailComponent } from '../page-catagories/page-catagories-detail/page-catagories-detail.component';
+import { PageCatagoriesModule } from '../page-catagories/page-catagories.module';
 
 @NgModule({
   imports: [
@@ -71,7 +74,9 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
     IconModule,
 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LanguagesModule,
+    PageCatagoriesModule
     
   ],
   providers: [PagesService,IconSetService],

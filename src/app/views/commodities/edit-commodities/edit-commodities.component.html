@@ -4,7 +4,7 @@
 
             <c-col [md]="1"><label cLabel for="name"><h5>Name</h5></label></c-col>
             
-            <c-col [md]="11">
+            <c-col [md]="4">
                 <input 
                   cFormControl 
                   formControlName="name" 
@@ -13,11 +13,28 @@
                   placeholder="Name"
                   [value] = "data.name" 
                 />
-
+            </c-col>
+            <c-col [md]="2"><label cLabel for="langId"><h5>language</h5></label></c-col>
+            <c-col [md]="5">
+                <select 
+                  aria-label="Default select example" 
+                  cSelect
+                  cFormControl 
+                  id="langId" 
+                  formControlName="langId"
+                  placeholder="Select language"
+                  >
+                    <option  
+                        *ngFor="let item of languages.data"
+                        [value]="item.id"
+                    >
+                        {{item.name}}
+                    </option>
+                </select>
             </c-col>
 
-            <c-col [md]="1"><label cLabel for="description"><h5>Description</h5></label></c-col>
-            <c-col [md]="11">
+            <c-col [md]="12"><label cLabel for="description"><h5>Description</h5></label></c-col>
+            <c-col [md]="12">
                 <textarea 
                     cFormControl 
                     id="description" 
@@ -45,20 +62,6 @@
                     type="file" 
                     (change)="uploadFile($event)"
                 />
-            </c-col>
-            <c-col [md]="1"><label cLabel for="langId"><h5>language</h5></label></c-col>
-            <c-col [md]="5">
-                <select 
-                    aria-label="Default select example" 
-                    cSelect
-                    cFormControl 
-                    id="langId" 
-                    formControlName="langId"
-                    placeholder="Select language"
-                    >
-                        <option value="Amharic">Amharic</option>
-                        <option value="English">English</option>
-                </select>
             </c-col>
             
             <c-col [xs]="12">

@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+
 import { PagesService } from '../pages.service';
+import { PageCatagoriesService } from '../../page-catagories/page-catagories.service';
+import { LanguagesService } from '../../languages/languages.service';
+
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import {  } from '@angular/platform-browser';
 
@@ -16,6 +20,8 @@ export class EditPagesComponent implements OnInit {
   form:FormGroup;
   editResponse:any={};
   getResponse:any={};
+  catagories:any={};
+  languages:any={};
   data:any={};
   id:any;
   imagePath:any;
@@ -23,6 +29,8 @@ export class EditPagesComponent implements OnInit {
   constructor(
     public fb: FormBuilder, 
     private service:PagesService,
+    private langService:LanguagesService,
+    private catagoryService:PageCatagoriesService,
     private route: ActivatedRoute
     ) {
     this.form = this.fb.group({
@@ -42,7 +50,8 @@ export class EditPagesComponent implements OnInit {
       this.id = params.get('id');
     });
 
-    console.log(this.id);
+    this.catagories = await this.catagoryService.getAllPageCatagory();
+    this.languages = await this.langService.getAllLanguage();
 
     this.getResponse = await this.service.getPage(this.id);
        

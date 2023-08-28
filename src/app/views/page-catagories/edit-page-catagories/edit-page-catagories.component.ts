@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PageCatagoriesService } from '../page-catagories.service';
+import { LanguagesService } from '../../languages/languages.service';
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import {  } from '@angular/platform-browser';
 
@@ -16,6 +17,7 @@ export class EditPageCatagoriesComponent implements OnInit {
   form:FormGroup;
   editResponse:any={};
   getResponse:any={};
+  languages:any={}
   data:any={};
   id:any;
   imagePath:any;
@@ -23,6 +25,7 @@ export class EditPageCatagoriesComponent implements OnInit {
   constructor(
     public fb: FormBuilder, 
     private service:PageCatagoriesService,
+    private langService:LanguagesService,
     private route: ActivatedRoute
     ) {
     this.form = this.fb.group({
@@ -41,7 +44,7 @@ export class EditPageCatagoriesComponent implements OnInit {
       this.id = params.get('id');
     });
 
-    console.log(this.id);
+    this.languages = (await this.langService.getAllLanguage());
 
     this.getResponse = await this.service.getPageCatagory(this.id);
        

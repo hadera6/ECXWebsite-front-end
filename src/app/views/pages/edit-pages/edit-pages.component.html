@@ -21,14 +21,18 @@
                     id="langId" 
                     formControlName="langId"
                     placeholder="Select language"
+                >
+                    <option  
+                        *ngFor="let item of languages.data"
+                        [value]="item.id"
                     >
-                        <option value="Amharic">Amharic</option>
-                        <option value="English">English</option>
+                        {{item.name}}
+                    </option>
                 </select>
             </c-col>
 
-            <c-col [md]="2"><label cLabel for="description"><h5>Description</h5></label></c-col>
-            <c-col [md]="10">
+            <c-col [md]="12"><label cLabel for="description"><h5>Description</h5></label></c-col>
+            <c-col [md]="12">
                 <textarea 
                     cFormControl 
                     id="description" 
@@ -65,8 +69,12 @@
                     formControlName="catagoryId"
                     placeholder="Select Catagory"
                     >
-                        <option value="Amharic">Amharic</option>
-                        <option value="English">English</option>
+                    <option  
+                        *ngFor="let item of catagories.data"
+                        [value]="item.id"
+                    >
+                        {{item.title}}
+                    </option>
                 </select>
             </c-col>
             <c-col [xs]="12">

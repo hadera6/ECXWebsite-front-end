@@ -1,0 +1,98 @@
+<c-card>
+    <c-card-body>
+        <form [formGroup]="form" cForm class="row g-3"  enctype="multipart/form-data" (ngSubmit)="submitForm()">
+
+            <c-col [md]="1"><label cLabel for="name"><h5>Name</h5></label></c-col>
+            <c-col [md]="4">
+                <input 
+                cFormControl 
+                formControlName="name" 
+                id="name" 
+                type="text" 
+                placeholder="Name" 
+                />
+            </c-col>
+            <c-col [md]="2"><label cLabel for="langId"><h5>Language</h5></label></c-col>
+            
+            <c-col [md]="5">
+                <select 
+                    aria-label="Default select example" 
+                    cSelect
+                    cFormControl 
+                    id="langId" 
+                    formControlName="langId"
+                    placeholder="Select language"
+                    >
+                    <option  
+                        *ngFor="let item of languages.data"
+                        [value]="item.id"
+                    >
+                        {{item.name}}
+                    </option>
+                </select>
+            </c-col>
+
+            <c-col [md]="1"><label cLabel for="latitude"><h5>Latitude</h5></label></c-col>
+            <c-col [md]="4">
+                <input 
+                cFormControl 
+                formControlName="latitude" 
+                id="latitude" 
+                type="text" 
+                placeholder="Latitude" 
+                />
+            </c-col><c-col [md]="2"><label cLabel for="longitude"><h5>Longitude</h5></label></c-col>
+            <c-col [md]="5">
+                <input 
+                cFormControl 
+                formControlName="longitude" 
+                id="longitude" 
+                type="text" 
+                placeholder="Longitude" 
+                />
+            </c-col>
+
+            <c-col [md]="12"><label cLabel for="description"><h5>Description</h5></label></c-col>
+            <c-col [md]="12">
+                <textarea 
+                    cFormControl 
+                    id="description" 
+                    rows="3"
+                    formControlName="description"
+                ></textarea>
+            </c-col>
+            <c-row>
+                <div>
+                    <c-row>
+                      <c-col [md]="1"></c-col>
+                      <c-col [md]="10">
+                        <img class="form-image"height="100" width="100" [src]="imagePath">
+                      </c-col>
+                    </c-row>
+                </div>
+            </c-row>
+            <c-col [md]="1"><label cLabel for="image"><h5>Image</h5></label></c-col>
+            <c-col [md]="5">
+                <input 
+                    cFormControl 
+                    id="image" 
+                    type="file" 
+                    (change)="uploadFile($event)"
+                />
+            </c-col>
+            <c-col [md]="1"><label cLabel for="capacity"><h5>Capacity</h5></label></c-col>
+            <c-col [md]="4">
+                <input 
+                cFormControl 
+                formControlName="capacity" 
+                id="capacity" 
+                type="text" 
+                placeholder="Capacity" 
+                />
+            </c-col>
+            <c-col [xs]="12">
+              <button cButton type="submit">Submit</button>
+            </c-col>
+          </form>
+    </c-card-body>
+</c-card>

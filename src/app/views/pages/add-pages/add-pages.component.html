@@ -69,6 +69,12 @@
                     formControlName="catagoryId"
                     placeholder="Select Catagory"
                     >
+                    <option  
+                        *ngFor="let item of catagories.data"
+                        [value]="item.id"
+                    >
+                        {{item.title}}
+                    </option>
                     
                 </select>
             </c-col>

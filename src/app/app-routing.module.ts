@@ -51,14 +51,19 @@ const routes: Routes = [
           import('./views/images/images.module').then((m) => m.ImagesModule)
       },
       {
-        path: 'career',
+        path: 'publications',
         loadChildren: () =>
-          import('./views/career/career.module').then((m) => m.CareerModule)
+          import('./views/publications/publications.module').then((m) => m.PublicationsModule)
       },
       {
-        path: 'contact-info',
+        path: 'announcements',
         loadChildren: () =>
-          import('./views/contact-info/contact-info.module').then((m) => m.ContactInfoModule)
+          import('./views/announcements/announcements.module').then((m) => m.AnnouncementsModule)
+      },
+      {
+        path: 'training-docs',
+        loadChildren: () =>
+          import('./views/training-docs/training-docs.module').then((m) => m.TrainingDocsModule)
       },
       {
         path: 'market-data',
@@ -66,14 +71,34 @@ const routes: Routes = [
           import('./views/market-data/market-data.module').then((m) => m.MarketDataModule)
       },
       {
-        path: 'media',
+        path: 'researchs',
         loadChildren: () =>
-          import('./views/media/media.module').then((m) => m.MediaModule)
+          import('./views/researchs/researchs.module').then((m) => m.ResearchsModule)
       },
       {
-        path: 'customer-support',
+        path: 'brochures',
         loadChildren: () =>
-          import('./views/customer-support/customer-support.module').then((m) => m.CustomerSupportModule)
+          import('./views/brochures/brochures.module').then((m) => m.BrochuresModule)
+      },
+      {
+        path: 'contract-files',
+        loadChildren: () =>
+          import('./views/contract-files/contract-files.module').then((m) => m.ContractFilesModule)
+      },
+      {
+        path: 'videos',
+        loadChildren: () =>
+          import('./views/videos/videos.module').then((m) => m.VideosModule)
+      },
+      {
+        path: 'warehouses',
+        loadChildren: () =>
+          import('./views/warehouses/warehouses.module').then((m) => m.WarehousesModule)
+      },
+      {
+        path: 'trading-centers',
+        loadChildren: () =>
+          import('./views/trading-centers/trading-centers.module').then((m) => m.TradingCentersModule)
       }
     ]
   },

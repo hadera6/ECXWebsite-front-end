@@ -1,0 +1,12 @@
+<c-card>
+    <c-card-header><h4>{{data?.name}}</h4></c-card-header>
+    <c-card-body>
+      <p cCardText>{{data?.description}}</p>
+    </c-card-body>
+
+    <!-- <object data="" type="application/pdf" width="100%" height="500px">
+      <p>Unable to display PDF file. <a href="{{filePath}}">Download</a> instead.</p>
+    </object> -->
+    <iframe [src]="filePath | safe" height="600px"></iframe>
+</c-card>
+

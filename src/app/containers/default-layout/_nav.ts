@@ -27,7 +27,7 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-speedometer' }
   },
   {
-    name: 'Image',
+    name: 'Images',
     url: '/images',
     iconComponent: { name: 'cil-speedometer' },
   },
@@ -37,28 +37,48 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-speedometer' }
   },
   {
-    name: 'Career',
-    url: '/career',
+    name: 'Publications',
+    url: '/publications',
     iconComponent: { name: 'cil-speedometer' }
   },
   {
-    name: 'ContactInfo',
-    url: '/contact-info',
+    name: 'Brochures',
+    url: '/brochures',
     iconComponent: { name: 'cil-speedometer' }
   },
   {
-    name: 'Media',
-    url: '/media',
+    name: 'Researchs',
+    url: '/researchs',
     iconComponent: { name: 'cil-speedometer' }
   },
   {
-    name: 'MarketData',
-    url: '/market-data',
+    name: 'Announcements',
+    url: '/announcements',
     iconComponent: { name: 'cil-speedometer' }
   },
   {
-    name: 'CustomerSupport',
-    url: '/customer-support',
+    name: 'TrainingDocs',
+    url: '/training-docs',
+    iconComponent: { name: 'cil-speedometer' }
+  },
+  {
+    name: 'ContractFiles',
+    url: '/contract-files',
+    iconComponent: { name: 'cil-speedometer' }
+  },
+  {
+    name: 'Videos',
+    url: '/videos',
+    iconComponent: { name: 'cil-speedometer' }
+  },
+  {
+    name: 'Warehouses',
+    url: '/warehouses',
+    iconComponent: { name: 'cil-speedometer' }
+  },
+  {
+    name: 'TradingCenters',
+    url: '/trading-centers',
     iconComponent: { name: 'cil-speedometer' }
   }
   

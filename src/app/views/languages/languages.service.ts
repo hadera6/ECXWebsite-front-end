@@ -16,9 +16,10 @@ export class LanguagesService {
     private route: ActivatedRoute
     ) { }
 
-    async getAllLanguage(){
+   async getAllLanguage(){
       const url = 'https://localhost:7284/api/Language';
       const response = await firstValueFrom(this.httpClient.get(url));
       return response;
+      
     }
 }

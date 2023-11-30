@@ -3,16 +3,12 @@
     --scrollbar-thumb-color: var(--cui-border-color, #999);
     --scrollbar-track-color: var(--cui-body-color, #fff);
     --scrollbar-hover-size: calc(var(--scrollbar-size) * 1.5);
-    background-color: rgb(168, 201, 137);
+    background-color: rgb(85, 156, 18);
   }
   c-sidebar-brand{
-    background-color: rgb(168, 201, 137);
+    background-color: rgb(255, 255, 255);
   }
   c-sidebar {
     background-color: rgb(168, 201, 137);
-  }
-  c-sidebar-nav {
-    color: black;
-  }
-  
+  } 
 }

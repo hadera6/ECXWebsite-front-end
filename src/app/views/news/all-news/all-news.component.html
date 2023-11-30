@@ -58,9 +58,13 @@
                     <img height="100" width="100" src="{{imagePath+item?.imgName}}">
                     </div>
                     <div class="col-md-10">
-                    <p [innerHTML]="item.description" style="height: 6px;">
+                    <p innerHTML="{{
+                        (item?.description.length>450)? 
+                        (item?.description | slice:0:450)+'  .  .  .':
+                        (item?.description)
+                    }}" style="height: 6px;">
                         
-                    </p>
+                    </p> 
                     </div>
                 </div>
                 <div class="row">

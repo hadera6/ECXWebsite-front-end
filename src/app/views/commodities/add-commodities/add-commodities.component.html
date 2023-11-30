@@ -24,10 +24,10 @@
                     placeholder="Select language"
                     >
                     <option  
-                        *ngFor="let item of languages.data"
-                        [value]="item.id"
+                        *ngFor="let item of languages?.data"
+                        [value]="item?.id"
                     >
-                        {{item.name}}
+                        {{item?.name}}
                     </option>
                 </select>
             </c-col>

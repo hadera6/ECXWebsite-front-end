@@ -12,8 +12,6 @@ export class DefaultLayoutComponent {
   public navItems = navItems;
   commodityId: string;
 
-
-
-
   constructor() {}
+  
 }
